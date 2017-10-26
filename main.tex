@@ -1,0 +1,115 @@
+% !TEX program = xelatex
+% Stony Brook University
+% Thesis & Dissertation Template
+% Based on Guidelines for the Preparation of Theses and Dissertations - Electronic Submissions
+% http://grad.stonybrook.edu/academics/thesis_dissertation_guidelines.php
+\documentclass[%
+    12pt,  % Size 12 font is recommended by the guidelines
+    letterpaper,
+    oneside,  % You should NOT add any blank pages to your document
+    notitlepage,
+%    pagesize,  % No explicit requirement of the paper size by the guidelines
+%    parskip=false,  % The first line of each paragraph should be indented using a standard tab indent. What's a standard tab???
+%    numbers=noendperiod, % 2.3.1 vs 2.3.1. (no dot after the last chapter number)
+%    toc=bibliography, % Bibliography appears in Table of Contents (without a number)
+%    toc=listof,  % List of Figures and List of Tables appear in Table of Contents
+%    version=last,  % Use latest version of the KOMA-Script
+%    chapterprefix=on  % Prefix to chapters
+]{report}
+
+\usepackage[]{stonybrook}
+\usepackage{lipsum}
+
+\input{preamble/packages.tex}
+
+%%% Graohics %%%
+\input{preamble/graphics.tex}
+
+%%% Math %%%
+% \input{preamble/math.tex}
+
+%%% Bibliography %%%
+\input{bibliography/bibliography.tex}
+
+\begin{document}
+%\frontmatter
+\pagestyle{plain}
+\singlespacing
+
+\pagenumbering{gobble}
+\input{preliminaries/title.tex}
+
+%\newpage
+%\pagenumbering{gobble}
+%\input{preliminaries/copyright.tex}
+
+\newpage
+\pagenumbering{roman}
+\setcounter{page}{2}
+\input{preliminaries/signature.tex}
+
+\newpage
+\input{preliminaries/abstract.tex}
+
+%\newpage
+%\input{preliminaries/dedication.tex}
+%
+%\newpage
+%\input{preliminaries/frontispiece.tex}
+
+\newpage
+\tableofcontents
+
+\newpage
+% Include these lists if applicable - if you have a list for each, each list must begin on a new page.
+\listoffigures
+
+\newpage
+% Include these lists if applicable - if you have a list for each, each list must begin on a new page.
+\listoftables
+
+%\newpage
+%\liftofabbr
+
+%\newpage
+%\input{preliminaries/preface.tex}
+
+\newpage
+\input{preliminaries/acknowledgements.tex}
+
+%\newpage
+%\input{preliminaries/vita.tex}
+
+%\mainmatter
+%%%%% Chapters %%%%%
+\newpage
+\pagenumbering{arabic}
+\doublespacing
+
+\chapter{A}
+\input{chapters/chapter1.tex}
+
+\chapter{B}
+\input{chapters/chapter2.tex}
+
+%\backmatter
+%%%%% Bibliography %%%%%
+\clearpage
+\singlespacing
+\nocite{*}
+\printbibliography[heading=bibintoc]
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%% Appendix %%%%% 
+\clearpage
+\appendix
+%\addchap{}
+\addcontentsline{toc}{chapter}{Appendix}
+\centerline{\bf{Appendix}}
+%\chapter{Appendix}
+\singlespacing
+%\refstepcounter{chapter}
+
+\input{appendix/appendix.tex}
+
+\end{document}

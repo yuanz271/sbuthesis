@@ -1,0 +1,40 @@
+%%% Packages
+\usepackage[table]{xcolor} 
+\usepackage{booktabs}  % Nice tables
+\usepackage[autostyle]{csquotes}
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{multirow}
+\usepackage{siunitx}
+\usepackage{tocbasic}
+%%%
+
+% ##############################################
+% Start: Floating Object Customization
+% ##############################################
+%
+
+% Extended support for captions of figures and tables etc.
+\usepackage{float}  % Extendes support for floating objects (tables, figures), adds the [H] placing option (\begin{figure}[H]) which palces it "Here".
+\usepackage{subcaption}
+%
+
+% #######################
+% End: Floating Object Customization
+% #######################
+
+% Package for PDF features such as bookmarks and hyperlinks. 
+\usepackage[%
+bookmarks, % Create bookmarks
+bookmarksopen=true, % Unfold bookmatk tree in PDF viewer when document is opened
+bookmarksopenlevel=1, % Level of unfolding
+bookmarksnumbered=true, % Number bookmarks
+hidelinks, % do not highlight hyperlinks -- looks ugly
+% Ansicht beim Öffnen
+pdfpagelabels=true, % See manual...
+plainpages=false, % See manual...
+hyperfootnotes=true, % Hyperlinks for footnotes
+hyperindex=true, % Indexeinträage verweisen auf Text
+]{hyperref}

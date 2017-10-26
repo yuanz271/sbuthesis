@@ -1,0 +1,102 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{stonybrook}[2017/05/04 Stony Brook University Thesis Style]
+
+%%% Packages
+\RequirePackage{geometry}
+\RequirePackage[utf8]{inputenc}  % Input encoding is 'utf8'
+\RequirePackage[T1]{fontenc}  % Font Encoding is 'T1' -- important for special characters such as Umlaute ü or ä and special
+\RequirePackage[english]{babel}  % Language support for 'english' (alternative 'ngerman' or 'french' for example)
+\RequirePackage{ragged2e}  % The right-hand margin of the text may be justified or ragged. Better support for ragged left and right. Provides the commands \RaggedRight and \RaggedLeft. Standard LaTeX commands are \raggedright and \raggedleft
+\RequirePackage{setspace}
+\RequirePackage{lmodern}
+\RequirePackage{tocbasic}
+\RequirePackage{caption}
+
+\newif\if@KOMA\@KOMAfalse
+\DeclareOption{KOMA}{
+    \@KOMAtrue
+}
+
+\DeclareOption{singlespacing}{
+    \singlespacing
+}
+
+\DeclareOption{onehalfspacing}{
+    \onehalfspacing
+}
+
+\DeclareOption{doublespacing}{
+    \doublespacing
+}
+
+\ExecuteOptions{doublespacing}
+
+\ProcessOptions\relax
+
+%%% Page Layout
+% All margins must measure 1 inch. 1½ inches for all margins is also acceptable.
+%%%
+
+\geometry{
+    margin=1.5in,  
+    showframe=false % For debugging: try true and see the layout frames
+}
+
+\captionsetup{
+    font={footnotesize},
+    labelfont={rm, footnotesize},
+    format=hang, % try plain or hang
+    %	margin=1in  % All margins must measure 1 inch. 1½ inches for all margins is also acceptable. 
+}
+
+% Headings Customization
+
+% KOMA-Script code to customize the headings
+\if@KOMA   
+    \RequirePackage{scrhack}  % for KOMA series
+    \renewcommand{\raggedchapter}{\centering}  % Center the chapter headings
+    \addtokomafont{chapter}{\normalsize\rmfamily\bfseries}  % The template uses normal size bold font
+    % The guidelines and template do not give a clear hint what format should be used for the subchapter headings. 
+    \addtokomafont{section}{\normalsize\rmfamily\bfseries}
+    \addtokomafont{subsection}{\normalsize\rmfamily\bfseries}
+    \addtokomafont{subsubsection}{\normalsize\rmfamily\bfseries}
+    \addtokomafont{disposition}{\normalsize\rmfamily}
+    \addto\captionsenglish{  % Use this command if babel is used
+    	\renewcommand{\contentsname}{Table of Contents}  % Use only this line if babel is absent
+    }
+    \RedeclareSectionCommand[afterskip=1in]{chapter}
+\else
+    \RequirePackage{titlesec}
+    \titleformat{\chapter}[display]{\bfseries\centering}{Chapter \thechapter}{0pt}{}
+    \titleformat*{\section}{\normalfont\bfseries}
+    %\titlespacing*{\section}{0pt}{*1in}{*1in}
+    \titleformat*{\subsection}{\normalfont\bfseries}
+    \titleformat*{\subsubsection}{\normalfont\bfseries}
+\fi
+
+\RequirePackage{indentfirst}  
+% The first line of each paragraph should be indented using a standard tab indent. 
+% Who knows how wide is a standard tab indent?
+\setlength{\parindent}{4ex}  %
+
+% The first line of the text of each chapter or major division should be about 1” (approximately 6 single spaces) below the last line of the chapter title or section heading, or may be begun on a new page. 
+% 1in space afer section headings is ugly
+%\RedeclareSectionCommand[afterskip=1in]{section}
+%\RedeclareSectionCommand[afterskip=1in]{subsection}
+%\RedeclareSectionCommand[afterskip=1in]{subsubsection}
+
+% Level for numbered captions
+\setcounter{secnumdepth}{5}
+
+% Level of chapters that appear in Table of Contents
+\setcounter{tocdepth}{5}
+% -2 no caption at all
+% -1 part
+% 0  chapter
+% 1  section    
+% 2  subsection 
+% 3  subsubsection
+% 4  paragraph
+% 5  subparagraph
+
+\newcommand{\ctext}[1]{\textcolor{#1}{#1}}
