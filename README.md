@@ -16,8 +16,3 @@ bash ./build.sh
 ```
 thesis.pdf
 ```
-
-## Clean
-```
-latexmk -c
-```
